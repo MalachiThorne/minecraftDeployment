@@ -1,0 +1,7 @@
+FROM openjdk:17-jdk
+
+WORKDIR /minecraft
+
+RUN curl -o server.jar https://launcher.mojang.com/v1/objects/1.21.4/server.jar
+
+CMD ["java", "-Xmx2048M", "-Xms2048M", "-jar", "server.jar", "nogui"]

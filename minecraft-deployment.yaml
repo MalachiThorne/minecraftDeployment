@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft
+  template:
+    metadata:
+      labels:
+        app: minecraft
+    spec:
+      containers:
+      - name: minecraft
+        image: mthorne2431/minecraft-server:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 25565
+        volumeMounts:
+        - name: minecraft-data
+          mountPath: /minecraft
+        volumes: 
+        - name: minecraft-data
+          persistentVolumeClaim:
+            claimName: minecraft-pvc
