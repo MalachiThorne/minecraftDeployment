@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: minecraft
-        image: mthorne2431/minecraft-server:latest
+        image: itzg/minecraft-server:java21-jdk
         resources:
           limits:
-            memory: "128Mi"
+            memory: "2048Mi"
             cpu: "500m"
         ports:
         - containerPort: 25565
